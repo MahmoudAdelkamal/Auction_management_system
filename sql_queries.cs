@@ -26,19 +26,8 @@ namespace Auction_Management_system
             sqlcon = new SqlConnection(connectionstring);
         }
 
-
-
-
-
-
         /////////////////////////////////////////////////////////Inserting data into the database//////////////////////////////////////////////////
        
-
-
-
-
-
-
 
         //inserting the user information into the database 
         public void insert_user_information(string profilename,string username,string password)
@@ -91,16 +80,7 @@ namespace Auction_Management_system
             }
         }
 
-
-
-
-
     ///////////////////////////////////////////////////////////User Authentication/////////////////////////////////////////////////////////////    
-
-
-
-
-
 
         // checking for the existence of a specific username in the database
         public bool check_username(string name)
@@ -145,16 +125,7 @@ namespace Auction_Management_system
             return dt.Rows.Count > 0;
         }
 
-
-
-
        /////////////////////////////////////////////////////////////////Retrieving data from the database//////////////////////////////////////////////////////
-
-
-
-
-
-
 
             //retrieve all of products to show it in the home page
         public DataTable Retrieve_products()

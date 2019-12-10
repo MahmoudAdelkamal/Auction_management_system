@@ -67,8 +67,8 @@ namespace Auction_Management_system
         }
         private void details_Click(object sender, EventArgs e)
         {
-            var ca = (Button)sender;
-            var x = (product)ca.Tag;
+            var btn = (Button)sender;
+            var x = (product)btn.Tag;
             product_details pd = new product_details(x.Title);
             pd.Show();
         }
