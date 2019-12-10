@@ -1,0 +1,111 @@
+﻿<Window x:Class="Auction_Management_system.Create_session"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:Auction_Management_system"
+        mc:Ignorable="d"
+        Title="Create_session" Height="800" Width="1350" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="83*"/>
+            <RowDefinition Height="688*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="71*"/>
+            <ColumnDefinition Width="1273*"/>
+        </Grid.ColumnDefinitions>
+        <Grid Height="60" Background="#FF2196F3" VerticalAlignment="Top" Grid.ColumnSpan="2">
+            <StackPanel Orientation="Horizontal">
+                <materialDesign:PopupBox Width="30" Height="30" Foreground="White">
+
+                </materialDesign:PopupBox>
+                <Button Click="Home_Click" Height="50" Width="120" Content="Home" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="25" Margin="10 0 0 0">
+                </Button>
+                <Button Click="category_Click" Height="50" Width="170" Content="Categories" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="25" Margin="75 0 0 0">
+                </Button>
+                <Button Click="account_Click" Height="50" Width="170" Content="My account" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="25" Margin="75 0 0 0">
+                </Button>
+                <Button Click="Create_session_Click" Height="50" Width="190" Content="create session" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="25" Margin="75 0 0 0">
+                </Button>
+                <Button Click="Logout_Click" Height="50" Width="170" Content="Logout" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="25" Margin="75 0 0 0">
+                </Button>
+            </StackPanel>
+        </Grid>
+        <Border Padding="10" Grid.ColumnSpan="2" Margin="0,0,0,0.4" Grid.RowSpan="2">
+            <StackPanel>
+                <!-- Submit Button -->
+                <Grid>
+                    <Button Click="sumbit_Click" Margin="406,693,0,-734" Content="Submit" Background="SkyBlue" RenderTransformOrigin="0.475,1.364" HorizontalAlignment="Left" Width="236" Foreground="White" FontSize="25" FontWeight="ExtraBold" Height="Auto"/>
+                </Grid>
+                <!-- Title -->
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="28*"/>
+                        <ColumnDefinition Width="61*"/>
+                        <ColumnDefinition Width="871*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock  Text="Title" FontWeight="Bold" FontSize="25" Margin="16,83,872,-91" Grid.ColumnSpan="3" />
+                    <TextBox x:Name="Title_textbox" Margin="16,111,555,-118.2" RenderTransformOrigin="0.557,0.526" FontSize="20" Grid.ColumnSpan="3" >
+                        <TextBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="5"/>
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+                </Grid>
+                <Grid>
+                    <TextBlock Text="Starting price" FontWeight="Bold" FontSize="25" Margin="16,140,872,-147.2" />
+                    <TextBox x:Name="price_textbox" Margin="16,181,555,-188.2" RenderTransformOrigin="0.557,0.526" FontSize="20" >
+                        <TextBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="5"/>
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+                </Grid>
+                <Grid Margin="0,0,-0.4,0">
+                    <TextBlock  Text="Description" FontWeight="Bold" FontSize="25" Margin="22,295,780.4,-301.6" />
+                    <TextBox x:Name="Description_textbox" Margin="22,334,590.4,-472.8" RenderTransformOrigin="0.557,0.526" FontSize="20" >
+                        <TextBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="5"/>
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+                </Grid>
+                <Grid Height="711">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="291*"/>
+                        <ColumnDefinition Width="33*"/>
+                        <ColumnDefinition Width="528*"/>
+                        <ColumnDefinition Width="45*"/>
+                        <ColumnDefinition Width="427*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Text="Main category " FontWeight="Bold" FontSize="25" Margin="17,178,10.2,-182"/>
+                    <ComboBox x:Name="category_textbox" Padding="2" Margin="17,229,96,445" Grid.ColumnSpan="3" FontSize="20" Height="37">
+                        <ComboBoxItem Content="Vehicles"/>
+                        <ComboBoxItem Content="Mobile Phones, Tablets and Accessories"/>
+                        <ComboBoxItem Content="Electronics and Home Appliances"/>
+                        <ComboBoxItem Content="Home Furniture - Decor"/>
+                        <ComboBoxItem Content="Fashion and Beauty"/>
+                        <ComboBoxItem Content="Kids and Babies"/>
+                        <ComboBoxItem Content="Accessories"/>
+                    </ComboBox>
+                    <Button Click="Browse_Click" Content="Browse" Grid.Column="4" HorizontalAlignment="Left" Margin="67.2,260,0,0" VerticalAlignment="Top" Width="123" RenderTransformOrigin="0.021,0.963" Height="50" Foreground="White" FontWeight="ExtraBold" FontSize="25"/>
+                    <TextBlock Grid.ColumnSpan="2" Grid.Column="2" HorizontalAlignment="Left" Margin="481,0,0,0" TextWrapping="Wrap" Text="Image" VerticalAlignment="Top" FontSize="25" FontWeight="Bold" Width="82"/>
+                    <Image x:Name="product_img" Grid.ColumnSpan="2" Grid.Column="3" HorizontalAlignment="Left" Height="198" Margin="27,38,0,0" VerticalAlignment="Top" Width="358" />
+                    <DatePicker  x:Name="datepicker1"  Focusable="False"  SelectedDateFormat="Short"  Grid.Column="4" HorizontalAlignment="Left"  Margin="183.2,407,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Height="26" Width="208">
+                    </DatePicker>
+                    <TextBlock Grid.Column="2" HorizontalAlignment="Left" Margin="519,408,0,0" TextWrapping="Wrap" Text="Session start-date" VerticalAlignment="Top" Height="32" Width="244" FontSize="25" FontWeight="Bold" RenderTransformOrigin="0.086,0.65" Grid.ColumnSpan="3"/>
+                    <TextBlock Grid.Column="2" HorizontalAlignment="Left" Margin="519,560,0,0" TextWrapping="Wrap" Text="Session end-date" VerticalAlignment="Top" Height="32" Width="244" FontSize="25" FontWeight="Bold" RenderTransformOrigin="0.519,-0.362" Grid.ColumnSpan="3"/>
+                    <DatePicker x:Name="datepicker2"  Focusable="False" Grid.Column="4" HorizontalAlignment="Left" Margin="181.2,562,0,0" VerticalAlignment="Top" Width="207"/>
+
+                </Grid>
+                <!-- Description -->
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>

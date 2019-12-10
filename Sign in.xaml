@@ -1,0 +1,72 @@
+﻿<Window x:Class="Auction_Management_system.Sign_in"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Auction_Management_system"
+        mc:Ignorable="d"
+        Title="Sign_in" Height="833.6" Width="1300" WindowStartupLocation="CenterScreen">
+    <Grid Margin="0,0,-6.4,-3">
+        <Grid.Background>
+            <ImageBrush ImageSource="D:\college material\auction.jpg"/>
+        </Grid.Background>
+        <Border Background="WhiteSmoke"  CornerRadius="10" Padding="15 50 15 15" Margin="129,43,124,66">
+            <StackPanel Margin="-0.2,0.4,0.4,-31.2">
+                <TextBlock
+                    Text="Sign in" 
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Center" 
+                    FontSize="55"
+                    Foreground="Orange"
+                />
+                <TextBlock 
+                    Text="It's all about to have fun"
+                    VerticalAlignment="Top" 
+                    HorizontalAlignment="Center" 
+                    FontSize="40" 
+                    Foreground="LightGray"
+                    Margin="162,10,133.2,0" Width="500"
+                />
+                <Label Content="Username" 
+                       FontSize="40"
+                       Foreground="Orange"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       Margin="300,30,267.2,0"
+                       Width="231"
+                 />
+                <TextBox 
+                    x:Name="username_login_textbox"
+                    FontSize="20"
+                    FontFamily="25" 
+                    Height="28"
+                    BorderThickness="0 0 0 1"
+                    Margin="137,20,143.8,0"
+                />
+                <Label Content="Password" 
+                       FontSize="40"
+                       Foreground="Orange"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       Margin="298,40,223.2,0" Width="274"
+                 />
+                <PasswordBox 
+                    x:Name="password_login_passwordbox"
+                    Height="44"
+                    BorderThickness="0 0 0 1" 
+                    FontSize="20" 
+                    Margin="137,10,144.6,0"
+                 />
+                <Button
+                    x:Name="sign_up_btn"
+                    Click="log_in_btn" Height="50"
+                    Margin="330,50,342.2,0"
+                    Content="log in" 
+                    Background="Orange"
+                    Foreground="White"
+                    FontSize="20"
+                />
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>
