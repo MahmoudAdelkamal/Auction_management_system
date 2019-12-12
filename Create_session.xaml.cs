@@ -89,7 +89,7 @@ namespace Auction_Management_system
             {
                 MessageBox.Show("Please Enter the initial price !");
             }
-            else if (Convert.ToInt32(price_textbox.Text) <= 0)
+            else if (Convert.ToDouble(price_textbox.Text) <= 0)
             {
                 MessageBox.Show("The initial price should be more than zero");
             }
@@ -112,7 +112,7 @@ namespace Auction_Management_system
             else
             {
                 sql_queries query = new sql_queries("Data Source=(local);Initial Catalog=Auction_mangement_system;Integrated Security=True");
-                query.insert_product_info(Title_textbox.Text, Convert.ToInt32(price_textbox.Text), category_textbox.Text, Description_textbox.Text, imgloc, datepicker1.SelectedDate.ToString(), datepicker2.SelectedDate.ToString());
+                query.insert_product_info(Title_textbox.Text, Convert.ToDouble(price_textbox.Text), category_textbox.Text, Description_textbox.Text, imgloc, datepicker1.SelectedDate.ToString(), datepicker2.SelectedDate.ToString());
                 MessageBox.Show("The product has been submitted to the Admin");
                 clear();
             }   

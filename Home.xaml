@@ -18,8 +18,6 @@
                 </materialDesign:PopupBox>
                 <Button Click="home_Click" Height="50" Width="120" Content="Home" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="25" Margin="10 0 0 0">
                 </Button>
-                <Button Click="category_Click" Height="50" Width="170" Content="Categories" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="25" Margin="75 0 0 0">
-                </Button>
                 <Button Click="account_Click"  Height="50" Width="170" Content="My account" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="25" Margin="75 0 0 0">
                 </Button>
                 <Button Click="Create_session_Click" Height="50" Width="190" Content="create session" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="25" Margin="75 0 0 0">
@@ -55,5 +53,9 @@
                 </ItemsControl>
             </StackPanel>
         </ScrollViewer>
+        <TextBox x:Name="search_textbox" TextChanged="search_textbox_TextChanged" MouseDoubleClick="search_textbox_MouseDoubleClick_1" HorizontalAlignment="Left" Height="39" Margin="1014,82,0,0" Grid.RowSpan="2" TextWrapping="Wrap" Text="" Foreground="Gray" FontSize="20" VerticalAlignment="Top" Width="304"/>
+        <ComboBox x:Name="Category_Combobox" HorizontalAlignment="Left" Margin="386,93,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="163" SelectionChanged="Category_Combobox_SelectionChanged">
+            
+        </ComboBox>
     </Grid>
 </Window>

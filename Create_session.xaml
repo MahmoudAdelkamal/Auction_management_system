@@ -21,15 +21,13 @@
                 <materialDesign:PopupBox Width="30" Height="30" Foreground="White">
 
                 </materialDesign:PopupBox>
-                <Button Click="Home_Click" Height="50" Width="120" Content="Home" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="25" Margin="10 0 0 0">
+                <Button Click="Home_Click" Height="50" Width="120" Content="Home" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="25" Margin="30 0 0 0">
                 </Button>
-                <Button Click="category_Click" Height="50" Width="170" Content="Categories" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="25" Margin="75 0 0 0">
+                <Button Click="account_Click" Height="50" Width="170" Content="My account" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="25" Margin="150 0 0 0">
                 </Button>
-                <Button Click="account_Click" Height="50" Width="170" Content="My account" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="25" Margin="75 0 0 0">
+                <Button Click="Create_session_Click" Height="50" Width="190" Content="create session" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="25" Margin="150 0 0 0">
                 </Button>
-                <Button Click="Create_session_Click" Height="50" Width="190" Content="create session" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="25" Margin="75 0 0 0">
-                </Button>
-                <Button Click="Logout_Click" Height="50" Width="170" Content="Logout" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="25" Margin="75 0 0 0">
+                <Button Click="Logout_Click" Height="50" Width="170" Content="Logout" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="25" Margin="150 0 0 0">
                 </Button>
             </StackPanel>
         </Grid>
@@ -87,7 +85,7 @@
                     <TextBlock Text="Main category " FontWeight="Bold" FontSize="25" Margin="17,178,10.2,-182"/>
                     <ComboBox x:Name="category_textbox" Padding="2" Margin="17,229,96,445" Grid.ColumnSpan="3" FontSize="20" Height="37">
                         <ComboBoxItem Content="Vehicles"/>
-                        <ComboBoxItem Content="Mobile Phones, Tablets and Accessories"/>
+                        <ComboBoxItem Content="Mobile"/>
                         <ComboBoxItem Content="Electronics and Home Appliances"/>
                         <ComboBoxItem Content="Home Furniture - Decor"/>
                         <ComboBoxItem Content="Fashion and Beauty"/>

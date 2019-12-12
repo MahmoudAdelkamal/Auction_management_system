@@ -43,3 +43,5 @@ C:\Users\Lenovo\is\Auction-management-system\Auction_Management_system\Auction_M
 C:\Users\Lenovo\is\Auction-management-system\Auction_Management_system\Auction_Management_system\obj\Debug\Create_session.baml
 C:\Users\Lenovo\is\Auction-management-system\Auction_Management_system\Auction_Management_system\obj\Debug\product_details.g.cs
 C:\Users\Lenovo\is\Auction-management-system\Auction_Management_system\Auction_Management_system\obj\Debug\product_details.baml
+C:\Users\Lenovo\is\Auction-management-system\Auction_Management_system\Auction_Management_system\obj\Debug\Account.g.cs
+C:\Users\Lenovo\is\Auction-management-system\Auction_Management_system\Auction_Management_system\obj\Debug\Account.baml

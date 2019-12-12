@@ -25,7 +25,14 @@ namespace Auction_Management_system
             InitializeComponent();
             var products = GetProducts();
             if (products.Count > 0)
-                Listproduct.ItemsSource = products;
+               Listproduct.ItemsSource = products;
+            sql_queries query = new sql_queries("Data Source=(local);Initial Catalog=Auction_mangement_system;Integrated Security=True");
+            DataTable dt = new DataTable();
+            dt = query.Get_categories();
+            foreach (DataRow dr in dt.Rows)
+            {
+                Category_Combobox.Items.Add(dr["category_name"]);
+            }
         }
         private void home_Click(object sender, EventArgs e)
         {
@@ -39,13 +46,11 @@ namespace Auction_Management_system
             session.Show();
             this.Close();
         }
-        private void category_Click(object sender, EventArgs e)
-        {
-
-        }
         private void account_Click(object sender, EventArgs e)
         {
-            
+            Account account = new Account();
+            account.Show();
+            this.Close();
         }
         private void Logout_Click(object sender, EventArgs e)
         {
@@ -78,14 +83,79 @@ namespace Auction_Management_system
             sql_queries query = new sql_queries("Data Source=(local);Initial Catalog=Auction_mangement_system;Integrated Security=True");
             dt = query.Retrieve_products();
             List<product> list = new List<product>();
+            BitmapImage bmp = new BitmapImage();
             foreach(DataRow dr in dt.Rows)
             {
-                product p = new product(dr["Title"].ToString(),Convert.ToDouble (dr["price"]),"C:\\Users\\Lenovo\\Pictures\\Camera Roll\\iphone.jpg");
+                byte[] img = null;
+                img = (byte[])(dr["photo"]);
+                BitmapImage b= new BitmapImage();
+                b = bytes_to_image(img);
+                product p = new product(dr["Title"].ToString(),Convert.ToDouble (dr["price"]),b);
                 list.Add(p);
             }
             return list;    
         }
-      }
+        private List<product>Get_searched_Product()
+        {
+
+            DataTable dt = new DataTable();
+            sql_queries query = new sql_queries("Data Source=(local);Initial Catalog=Auction_mangement_system;Integrated Security=True");
+            dt = query.search_product(search_textbox.Text);
+            List<product> list = new List<product>();
+            BitmapImage bmp = new BitmapImage();
+            foreach (DataRow dr in dt.Rows)
+            {
+                byte[] img = null;
+                img = (byte[])(dr["photo"]);
+                BitmapImage b = new BitmapImage();
+                b = bytes_to_image(img);
+                product p = new product(dr["Title"].ToString(), Convert.ToDouble(dr["price"]), b);
+                list.Add(p);
+            }
+            return list;
+        }
+        private List<product>Get_products_by_category(string category)
+        {
+            DataTable dt = new DataTable();
+            sql_queries query = new sql_queries("Data Source=(local);Initial Catalog=Auction_mangement_system;Integrated Security=True");
+            dt = query.Filter_by_category(category);
+            List<product> list = new List<product>();
+            BitmapImage bmp = new BitmapImage();
+            foreach (DataRow dr in dt.Rows)
+            {
+                byte[] img = null;
+                img = (byte[])(dr["photo"]);
+                BitmapImage b = new BitmapImage();
+                b = bytes_to_image(img);
+                product p = new product(dr["Title"].ToString(), Convert.ToDouble(dr["price"]), b);
+                list.Add(p);
+            }
+            return list;
+        }
+        private void search_textbox_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void search_textbox_MouseDoubleClick_1(object sender, MouseButtonEventArgs e)
+        {
+            search_textbox.Text = "";
+        }
+
+        private void search_textbox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            var p = Get_searched_Product();
+            if (p.Count > 0)
+                Listproduct.ItemsSource = p;
+        }
+        
+        private void Category_Combobox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var p = Get_products_by_category(Category_Combobox.SelectedItem.ToString());
+            if (p.Count > 0)
+                Listproduct.ItemsSource = p;
+        }
+    }
    }
     
           

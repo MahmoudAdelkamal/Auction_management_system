@@ -105,6 +105,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Account.xaml.cs">
+      <DependentUpon>Account.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Create_session.xaml.cs">
       <DependentUpon>Create_session.xaml</DependentUpon>
     </Compile>
@@ -119,6 +122,10 @@
       <DependentUpon>Sign in.xaml</DependentUpon>
     </Compile>
     <Compile Include="sql_queries.cs" />
+    <Page Include="Account.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Create_session.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

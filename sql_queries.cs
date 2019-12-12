@@ -21,6 +21,7 @@ namespace Auction_Management_system
     class sql_queries
     {
         private SqlConnection sqlcon;
+
         public sql_queries(string connectionstring)
         {
             sqlcon = new SqlConnection(connectionstring);
@@ -49,7 +50,7 @@ namespace Auction_Management_system
             }
         }
         //inserting the product information into the database
-        public void insert_product_info(string Title, int price, string category, string description, string image_location, string startdate, string enddate)
+        public void insert_product_info(string Title, double price, string category, string description, string image_location, string startdate, string enddate)
         {
             byte[] image = null;
             FileStream fs = new FileStream(image_location, FileMode.Open, FileAccess.Read);
@@ -135,6 +136,67 @@ namespace Auction_Management_system
             {
                 sqlcon.Open();
                 string query = "select * from session";
+                SqlDataAdapter sda = new SqlDataAdapter(query, sqlcon);
+                sda.Fill(dt);
+            }
+            catch(SqlException exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
+            finally
+            {
+                sqlcon.Close();
+            }
+            return dt;
+        }
+        public DataTable search_product(string title)
+        {
+            DataTable dt = new DataTable();
+            string query = "select * from session where Title like'%" + title + "%'";
+            try
+            {
+                sqlcon.Open();
+                SqlDataAdapter sda = new SqlDataAdapter(query, sqlcon);
+                sda.Fill(dt);
+            }
+            catch(SqlException exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
+            finally
+            {
+                sqlcon.Close();
+            }
+            return dt;
+        }
+
+        public DataTable Filter_by_category(string category)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                sqlcon.Open();
+                string query = "select * from session where category ='" + category + "'";
+                SqlDataAdapter sda = new SqlDataAdapter(query, sqlcon);
+                sda.Fill(dt);
+            }
+            catch (SqlException exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
+            finally
+            {
+                sqlcon.Close();
+            }
+            return dt;
+        }
+        public DataTable Get_categories()
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                sqlcon.Open();
+                string query = "select * from Category";
                 SqlDataAdapter sda = new SqlDataAdapter(query, sqlcon);
                 sda.Fill(dt);
             }
