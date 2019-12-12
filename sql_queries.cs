@@ -22,9 +22,9 @@ namespace Auction_Management_system
     {
         private SqlConnection sqlcon;
 
-        public sql_queries(string connectionstring)
+        public sql_queries(string connectionstrings)
         {
-            sqlcon = new SqlConnection(connectionstring);
+            sqlcon = new SqlConnection(connectionstrings);
         }
 
         /////////////////////////////////////////////////////////Inserting data into the database//////////////////////////////////////////////////
