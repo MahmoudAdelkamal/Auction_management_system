@@ -19,15 +19,24 @@ namespace Auction_Management_system
     class product
     {
         public string Title { get; set; }
+        public int Id { get; set; }
         public double price { get; set; }
-        public string category { get; set; }
+        public string Winner { get; set; }
         public BitmapImage photo { get; set; }
-        public product(string Title,double price,BitmapImage photo,string category)
+        public string category { get; set; }
+        public string start_date { get; set; }
+        public string end_date { get; set; }
+
+        public product(int Id,string Winner,string Title,double price,BitmapImage photo,string category,string start_date,string end_date)
         {
+            this.Id = Id;
+            this.Winner = Winner;
             this.Title = Title;
-            this.photo = photo;
             this.price = price;
+            this.photo = photo;
             this.category = category;
+            this.start_date = start_date;
+            this.end_date = end_date;
         }
     }
 }

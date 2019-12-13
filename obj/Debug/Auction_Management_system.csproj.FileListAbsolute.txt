@@ -22,15 +22,23 @@ C:\Users\Lenovo\is\Auction-management-system\Auction_Management_system\Auction_M
 C:\Users\Lenovo\is\Auction-management-system\Auction_Management_system\Auction_Management_system\bin\Debug\MaterialDesignColors.pdb
 C:\Users\Lenovo\is\Auction-management-system\Auction_Management_system\Auction_Management_system\bin\Debug\MaterialDesignThemes.Wpf.pdb
 C:\Users\Lenovo\is\Auction-management-system\Auction_Management_system\Auction_Management_system\bin\Debug\MaterialDesignThemes.Wpf.xml
+C:\Users\Lenovo\is\Auction-management-system\Auction_Management_system\Auction_Management_system\obj\Debug\Account.g.cs
+C:\Users\Lenovo\is\Auction-management-system\Auction_Management_system\Auction_Management_system\obj\Debug\Create_session.g.cs
 C:\Users\Lenovo\is\Auction-management-system\Auction_Management_system\Auction_Management_system\obj\Debug\Home.g.cs
 C:\Users\Lenovo\is\Auction-management-system\Auction_Management_system\Auction_Management_system\obj\Debug\MainWindow.g.cs
+C:\Users\Lenovo\is\Auction-management-system\Auction_Management_system\Auction_Management_system\obj\Debug\product_details.g.cs
+C:\Users\Lenovo\is\Auction-management-system\Auction_Management_system\Auction_Management_system\obj\Debug\Session.g.cs
 C:\Users\Lenovo\is\Auction-management-system\Auction_Management_system\Auction_Management_system\obj\Debug\Sign in.g.cs
 C:\Users\Lenovo\is\Auction-management-system\Auction_Management_system\Auction_Management_system\obj\Debug\App.g.cs
 C:\Users\Lenovo\is\Auction-management-system\Auction_Management_system\Auction_Management_system\obj\Debug\Auction_Management_system_MarkupCompile.cache
 C:\Users\Lenovo\is\Auction-management-system\Auction_Management_system\Auction_Management_system\obj\Debug\Auction_Management_system_MarkupCompile.lref
 C:\Users\Lenovo\is\Auction-management-system\Auction_Management_system\Auction_Management_system\obj\Debug\App.baml
+C:\Users\Lenovo\is\Auction-management-system\Auction_Management_system\Auction_Management_system\obj\Debug\Account.baml
+C:\Users\Lenovo\is\Auction-management-system\Auction_Management_system\Auction_Management_system\obj\Debug\Create_session.baml
 C:\Users\Lenovo\is\Auction-management-system\Auction_Management_system\Auction_Management_system\obj\Debug\Home.baml
 C:\Users\Lenovo\is\Auction-management-system\Auction_Management_system\Auction_Management_system\obj\Debug\MainWindow.baml
+C:\Users\Lenovo\is\Auction-management-system\Auction_Management_system\Auction_Management_system\obj\Debug\product_details.baml
+C:\Users\Lenovo\is\Auction-management-system\Auction_Management_system\Auction_Management_system\obj\Debug\Session.baml
 C:\Users\Lenovo\is\Auction-management-system\Auction_Management_system\Auction_Management_system\obj\Debug\Sign in.baml
 C:\Users\Lenovo\is\Auction-management-system\Auction_Management_system\Auction_Management_system\obj\Debug\Auction_Management_system.g.resources
 C:\Users\Lenovo\is\Auction-management-system\Auction_Management_system\Auction_Management_system\obj\Debug\Auction_Management_system.Properties.Resources.resources
@@ -39,9 +47,5 @@ C:\Users\Lenovo\is\Auction-management-system\Auction_Management_system\Auction_M
 C:\Users\Lenovo\is\Auction-management-system\Auction_Management_system\Auction_Management_system\obj\Debug\Auction_Management_system.exe
 C:\Users\Lenovo\is\Auction-management-system\Auction_Management_system\Auction_Management_system\obj\Debug\Auction_Management_system.pdb
 C:\Users\Lenovo\is\Auction-management-system\Auction_Management_system\Auction_Management_system\obj\Debug\Auction_Management_system.csprojAssemblyReference.cache
-C:\Users\Lenovo\is\Auction-management-system\Auction_Management_system\Auction_Management_system\obj\Debug\Create_session.g.cs
-C:\Users\Lenovo\is\Auction-management-system\Auction_Management_system\Auction_Management_system\obj\Debug\Create_session.baml
-C:\Users\Lenovo\is\Auction-management-system\Auction_Management_system\Auction_Management_system\obj\Debug\product_details.g.cs
-C:\Users\Lenovo\is\Auction-management-system\Auction_Management_system\Auction_Management_system\obj\Debug\product_details.baml
-C:\Users\Lenovo\is\Auction-management-system\Auction_Management_system\Auction_Management_system\obj\Debug\Account.g.cs
-C:\Users\Lenovo\is\Auction-management-system\Auction_Management_system\Auction_Management_system\obj\Debug\Account.baml
+C:\Users\Lenovo\is\Auction-management-system\Auction_Management_system\Auction_Management_system\obj\Debug\Result.g.cs
+C:\Users\Lenovo\is\Auction-management-system\Auction_Management_system\Auction_Management_system\obj\Debug\Result.baml

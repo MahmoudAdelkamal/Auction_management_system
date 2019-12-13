@@ -20,12 +20,14 @@ namespace Auction_Management_system
 {
     public partial class Home : Window
     {
+        private string username;
         public Home()
         {
             InitializeComponent();
+            username = User.username;
             var products = GetProducts();
             if (products.Count > 0)
-               Listproduct.ItemsSource = products;
+                Listproduct.ItemsSource = products;
             sql_queries query = new sql_queries("Data Source=(local);Initial Catalog=Auction_mangement_system;Integrated Security=True");
             DataTable dt = new DataTable();
             dt = query.Get_categories();
@@ -74,34 +76,15 @@ namespace Auction_Management_system
         {
             var btn = (Button)sender;
             var x = (product)btn.Tag;
-            product_details pd = new product_details(x.Title,x.price,x.photo,x.category);
-            pd.Show();
-            this.Close();
+            MessageBox.Show(x.Winner);
+            //product_details pd = new product_details(x.Title, x.price, x.photo, x.category);
+            //pd.Show();
         }
         private List<product> GetProducts()
-        { 
+        {
             DataTable dt = new DataTable();
             sql_queries query = new sql_queries("Data Source=(local);Initial Catalog=Auction_mangement_system;Integrated Security=True");
             dt = query.Retrieve_products();
-            List<product> list = new List<product>();
-            BitmapImage bmp = new BitmapImage();
-            foreach(DataRow dr in dt.Rows)
-            {
-                byte[] img = null;
-                img = (byte[])(dr["photo"]);
-                BitmapImage b= new BitmapImage();
-                b = bytes_to_image(img);
-                product p = new product(dr["Title"].ToString(),Convert.ToDouble (dr["price"]),b,dr["category"].ToString());
-                list.Add(p);
-            }
-            return list;    
-        }
-        private List<product>Get_Product_by_search()
-        {
-
-            DataTable dt = new DataTable();
-            sql_queries query = new sql_queries("Data Source=(local);Initial Catalog=Auction_mangement_system;Integrated Security=True");
-            dt = query.search_product(search_textbox.Text);
             List<product> list = new List<product>();
             BitmapImage bmp = new BitmapImage();
             foreach (DataRow dr in dt.Rows)
@@ -110,12 +93,30 @@ namespace Auction_Management_system
                 img = (byte[])(dr["photo"]);
                 BitmapImage b = new BitmapImage();
                 b = bytes_to_image(img);
-                product p = new product(dr["Title"].ToString(), Convert.ToDouble(dr["price"]), b,dr["category"].ToString());
+                product p = new product(Convert.ToInt32(dr["ID"]),dr["Winner"].ToString(), dr["Title"].ToString(), Convert.ToDouble(dr["price"]), b, dr["category"].ToString(), dr["start_date"].ToString(), dr["end_date"].ToString());
                 list.Add(p);
             }
             return list;
         }
-        private List<product>Get_products_by_category(string category)
+        private List<product> Get_Product_by_search()
+        {
+            DataTable dt = new DataTable();
+            sql_queries query = new sql_queries("Data Source=(local);Initial Catalog=Auction_mangement_system;Integrated Security=True");
+            dt = query.search_product(search_textbox.Text,Category_Combobox.Text);
+            List<product> list = new List<product>();
+            BitmapImage bmp = new BitmapImage();
+            foreach (DataRow dr in dt.Rows)
+            {
+                byte[] img = null;
+                img = (byte[])(dr["photo"]);
+                BitmapImage b = new BitmapImage();
+                b = bytes_to_image(img);
+                product p = new product(Convert.ToInt32(dr["ID"]), dr["Winner"].ToString(), dr["Title"].ToString(), Convert.ToDouble(dr["price"]), b, dr["category"].ToString(), dr["start_date"].ToString(), dr["end_date"].ToString());
+                list.Add(p);
+            }
+            return list;
+        }
+        private List<product> Get_products_by_category(string category)
         {
             DataTable dt = new DataTable();
             sql_queries query = new sql_queries("Data Source=(local);Initial Catalog=Auction_mangement_system;Integrated Security=True");
@@ -128,7 +129,7 @@ namespace Auction_Management_system
                 img = (byte[])(dr["photo"]);
                 BitmapImage b = new BitmapImage();
                 b = bytes_to_image(img);
-                product p = new product(dr["Title"].ToString(), Convert.ToDouble(dr["price"]), b,dr["category"].ToString());
+                product p = new product(Convert.ToInt32(dr["ID"]), dr["Winner"].ToString(), dr["Title"].ToString(), Convert.ToDouble(dr["price"]), b, dr["category"].ToString(),dr["start_date"].ToString(),dr["end_date"].ToString());
                 list.Add(p);
             }
             return list;
@@ -145,18 +146,40 @@ namespace Auction_Management_system
 
         private void search_textbox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            var p =Get_Product_by_search();
+            var p = Get_Product_by_search();
             if (p.Count > 0)
                 Listproduct.ItemsSource = p;
         }
-        
+
         private void Category_Combobox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var p = Get_products_by_category(Category_Combobox.SelectedItem.ToString());
             if (p.Count > 0)
                 Listproduct.ItemsSource = p;
         }
+
+        private void join(object sender, RoutedEventArgs e)
+        {
+
+            var btn=(Button)sender;
+            var x = (product)btn.Tag;
+            DateTime Start = Convert.ToDateTime(x.start_date);
+            DateTime End = Convert.ToDateTime(x.end_date);
+            int t1 = DateTime.Compare(Start, DateTime.Now);
+            int t2 = DateTime.Compare(DateTime.Now, End);
+            //if (t1 > 0)
+              //  MessageBox.Show("The session didn't start yet");
+            //else if(t2 < 0)
+            //{
+                Session session = new Session(x.Id,x.photo,x.Title,x.Winner,x.price);
+                session.Show();
+                this.Close();
+            //}
+            //else if(t2 > 0)
+            //{
+
+            //}
+        }
     }
-   }
-    
-          
+}
+

@@ -28,10 +28,10 @@ namespace Auction_Management_system
         }
 
         ////////////////////////////////////////////////////////////Inserting data into the database//////////////////////////////////////////////////
-       
+
 
         //inserting the user information into the database 
-        public void insert_user_information(string profilename,string username,string password)
+        public void insert_user_information(string profilename, string username, string password)
         {
             try
             {
@@ -59,7 +59,7 @@ namespace Auction_Management_system
             try
             {
                 sqlcon.Open();
-                string query = "insert into session(Title,price,category,Descriptions,photo,start_date,end_date) values(@Title,@price,@category,@description,@image,@start,@end)";
+                string query = "insert into product(Title,price,category,Descriptions,photo,start_date,end_date) values(@Title,@price,@category,@description,@image,@start,@end)";
                 SqlCommand sqlcmd;
                 sqlcmd = new SqlCommand(query, sqlcon);
                 sqlcmd.Parameters.Add(new SqlParameter("@Title", Title));
@@ -81,7 +81,7 @@ namespace Auction_Management_system
             }
         }
 
-    ///////////////////////////////////////////////////////////User Authentication/////////////////////////////////////////////////////////////    
+        ///////////////////////////////////////////////////////////User Authentication/////////////////////////////////////////////////////////////    
 
         // checking for the existence of a specific username in the database
         public bool check_username(string name)
@@ -94,7 +94,7 @@ namespace Auction_Management_system
                 SqlDataAdapter sda = new SqlDataAdapter(query, sqlcon);
                 sda.Fill(dt);
             }
-            catch(SqlException exception)
+            catch (SqlException exception)
             {
                 MessageBox.Show(exception.Message);
             }
@@ -105,17 +105,17 @@ namespace Auction_Management_system
             return dt.Rows.Count > 0;
         }
         // checking for the existence of a specific username and password in the database
-        public bool check_username_and_password(string name,string password) 
+        public bool check_username_and_password(string name, string password)
         {
             DataTable dt = new DataTable();
             try
             {
                 sqlcon.Open();
-                string query= "select username,password from UserInformation where username="+"'"+name+"'"+"and password="+"'"+password+"'";
+                string query = "select username,password from UserInformation where username=" + "'" + name + "'" + "and password=" + "'" + password + "'";
                 SqlDataAdapter sda = new SqlDataAdapter(query, sqlcon);
                 sda.Fill(dt);
             }
-            catch(SqlException exception)
+            catch (SqlException exception)
             {
                 MessageBox.Show(exception.Message);
             }
@@ -126,20 +126,20 @@ namespace Auction_Management_system
             return dt.Rows.Count > 0;
         }
 
-       /////////////////////////////////////////////////////////////////Retrieving data from the database//////////////////////////////////////////////////////
+        /////////////////////////////////////////////////////////////////Retrieving data from the database//////////////////////////////////////////////////////
 
-            //retrieve all of products to show it in the home page
+        //retrieve all of products to show it in the home page
         public DataTable Retrieve_products()
         {
             DataTable dt = new DataTable();
             try
             {
                 sqlcon.Open();
-                string query = "select * from session";
+                string query = "select * from product";
                 SqlDataAdapter sda = new SqlDataAdapter(query, sqlcon);
                 sda.Fill(dt);
             }
-            catch(SqlException exception)
+            catch (SqlException exception)
             {
                 MessageBox.Show(exception.Message);
             }
@@ -150,17 +150,25 @@ namespace Auction_Management_system
             return dt;
         }
         //searching for specific product
-        public DataTable search_product(string title)
+        public DataTable search_product(string title, string category)
         {
             DataTable dt = new DataTable();
-            string query = "select * from session where Title like'%" + title + "%'";
+            string query;
+            if (category == "")
+            {
+                query = "select * from product where  Title like'%" + title + "%'";
+            }
+            else
+            {       
+                query = "select * from product where category='" + category + "' and Title like'%" + title + "%'";
+            } 
             try
             {
                 sqlcon.Open();
                 SqlDataAdapter sda = new SqlDataAdapter(query, sqlcon);
                 sda.Fill(dt);
             }
-            catch(SqlException exception)
+            catch (SqlException exception)
             {
                 MessageBox.Show(exception.Message);
             }
@@ -178,13 +186,14 @@ namespace Auction_Management_system
             try
             {
                 sqlcon.Open();
-                string querys = "select * from session where category ='" + category + "'";
+
+                string querys = "select * from product where category ='" + category + "'";
                 SqlDataAdapter sda = new SqlDataAdapter(querys, sqlcon);
                 sda.Fill(dt);
             }
             catch (SqlException exception)
             {
-                MessageBox.Show(exception.Message) ;
+                MessageBox.Show(exception.Message);
             }
             finally
             {
@@ -207,7 +216,7 @@ namespace Auction_Management_system
                 SqlDataAdapter sda = new SqlDataAdapter(query, sqlcon);
                 sda.Fill(dt);
             }
-            catch(SqlException exception)
+            catch (SqlException exception)
             {
                 MessageBox.Show(exception.Message);
             }
@@ -217,7 +226,24 @@ namespace Auction_Management_system
             }
             return dt;
         }
+        ///////////////////////////////////////////////////////Update queries////////////////////////////////////////////////
+        public void update_top_price(double value,int Id,string username)
+        {
+            string query = "update product set price = " + value +", Winner ='" +username +"'" + "where id =" + Id;
+            try
+            {
+                sqlcon.Open();
+                SqlCommand sqlcmd = new SqlCommand(query, sqlcon);
+                sqlcmd.ExecuteNonQuery();
+            }
+            catch (SqlException exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
+            finally
+            {
+                sqlcon.Close();
+            }
+        }
     }
 }
-
-

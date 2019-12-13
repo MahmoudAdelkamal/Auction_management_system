@@ -118,10 +118,17 @@
     <Compile Include="product_details.xaml.cs">
       <DependentUpon>product_details.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Result.xaml.cs">
+      <DependentUpon>Result.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Session.xaml.cs">
+      <DependentUpon>Session.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Sign in.xaml.cs">
       <DependentUpon>Sign in.xaml</DependentUpon>
     </Compile>
     <Compile Include="sql_queries.cs" />
+    <Compile Include="User.cs" />
     <Page Include="Account.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -147,6 +154,14 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="product_details.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Result.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Session.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

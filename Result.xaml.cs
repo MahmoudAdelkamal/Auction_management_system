@@ -14,17 +14,14 @@ using System.Windows.Shapes;
 
 namespace Auction_Management_system
 {
-    public partial class product_details : Window
+    /// <summary>
+    /// Interaction logic for Result.xaml
+    /// </summary>
+    public partial class Result : Window
     {
-        public product_details(string title,double price,BitmapImage photo,string category)
+        public Result()
         {
             InitializeComponent();
-            Title_textbox.Text = title;
-            price_textbox.Text = price.ToString();
-            product_img.Source = photo;
-            category_textbox.Text = category;
         }
-
-        
     }
 }

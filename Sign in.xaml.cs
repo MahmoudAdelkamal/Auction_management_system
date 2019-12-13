@@ -28,6 +28,7 @@ namespace Auction_Management_system
             }
             else
             {
+                User.username = username_login_textbox.Text;
                 Home home = new Home();
                 home.Show();
                 this.Close();

@@ -80,7 +80,13 @@ namespace Auction_Management_system
         private void sumbit_Click(object sender, EventArgs e)
         {
             DateTime dt1 = Convert.ToDateTime(datepicker1.SelectedDate);
+            DateTime time = Convert.ToDateTime(time1.SelectedTime);
+            DateTime dtime2 = Convert.ToDateTime(time2.SelectedTime);
             DateTime dt2 = Convert.ToDateTime(datepicker2.SelectedDate);
+            string startdate = "";
+            string enddate = "";
+            startdate = time1.SelectedTime.ToString();
+            enddate = time2.SelectedTime.ToString();
             if (Title_textbox.Text.Length > 30 || Title_textbox.Text.Length < 5)
             {
                 MessageBox.Show("The title length should be between 5 and 30 letters ! ");
@@ -105,14 +111,14 @@ namespace Auction_Management_system
             {
                 MessageBox.Show("The starting date should be a valid date !");
             }
-            else if (DateTime.Compare(dt1, dt2) >= 0)
+            else if (DateTime.Compare(dt1,dt2) > 0 )
             {
-                MessageBox.Show("The end date couldn't be earlier than or equal the start date ! ");
+                MessageBox.Show("The end date couldn't be earlier than the start date ! ");
             }
             else
             {
                 sql_queries query = new sql_queries("Data Source=(local);Initial Catalog=Auction_mangement_system;Integrated Security=True");
-                query.insert_product_info(Title_textbox.Text, Convert.ToDouble(price_textbox.Text), category_textbox.Text, Description_textbox.Text, imgloc, datepicker1.SelectedDate.ToString(), datepicker2.SelectedDate.ToString());
+                query.insert_product_info(Title_textbox.Text, Convert.ToDouble(price_textbox.Text), category_textbox.Text, Description_textbox.Text, imgloc, startdate,enddate);
                 MessageBox.Show("The product has been submitted to the Admin");
                 clear();
             }   
