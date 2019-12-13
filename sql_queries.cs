@@ -178,19 +178,23 @@ namespace Auction_Management_system
             try
             {
                 sqlcon.Open();
-                string query = "select * from session where category ='" + category + "'";
-                SqlDataAdapter sda = new SqlDataAdapter(query, sqlcon);
+                string querys = "select * from session where category ='" + category + "'";
+                SqlDataAdapter sda = new SqlDataAdapter(querys, sqlcon);
                 sda.Fill(dt);
             }
             catch (SqlException exception)
             {
-                MessageBox.Show(exception.Message);
+                MessageBox.Show(exception.Message) ;
             }
             finally
             {
                 sqlcon.Close();
             }
             return dt;
+        }
+        public void g()
+        {
+
         }
         // returns all the products found in a specific category
         public DataTable Get_categories()
