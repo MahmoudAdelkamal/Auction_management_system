@@ -167,18 +167,20 @@ namespace Auction_Management_system
             DateTime End = Convert.ToDateTime(x.end_date);
             int t1 = DateTime.Compare(Start, DateTime.Now);
             int t2 = DateTime.Compare(DateTime.Now, End);
-            //if (t1 > 0)
-              //  MessageBox.Show("The session didn't start yet");
-            //else if(t2 < 0)
-            //{
+            if (t1 > 0)
+               MessageBox.Show("The session didn't start yet");
+            else if(t2 < 0)
+            {
                 Session session = new Session(x.Id,x.photo,x.Title,x.Winner,x.price);
                 session.Show();
                 this.Close();
-            //}
-            //else if(t2 > 0)
-            //{
-
-            //}
+            }
+            else if(t2 > 0)
+            {
+                Result result = new Result();
+                result.Show();
+                this.Close();
+            }
         }
     }
 }

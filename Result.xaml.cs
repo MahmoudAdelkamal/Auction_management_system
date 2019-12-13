@@ -14,9 +14,6 @@ using System.Windows.Shapes;
 
 namespace Auction_Management_system
 {
-    /// <summary>
-    /// Interaction logic for Result.xaml
-    /// </summary>
     public partial class Result : Window
     {
         public Result()

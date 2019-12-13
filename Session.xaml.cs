@@ -45,7 +45,6 @@ namespace Auction_Management_system
                 this.Close();
             }
         }
-
         private void Top_price_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("The current price is " + current_price.ToString());
