@@ -54,7 +54,7 @@
                     </TextBox>
                 </Grid>
                 <Grid>
-                    <TextBlock Text="Starting price" FontWeight="Bold" FontSize="25" Margin="16,140,872,-147.2" />
+                    <TextBlock Text="initial price" FontWeight="Bold" FontSize="25" Margin="16,140,872,-147.2" />
                     <TextBox x:Name="price_textbox" Margin="16,181,555,-188.2" RenderTransformOrigin="0.557,0.526" FontSize="20" >
                         <TextBox.Resources>
                             <Style TargetType="{x:Type Border}">

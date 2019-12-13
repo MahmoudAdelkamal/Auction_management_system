@@ -27,7 +27,7 @@ namespace Auction_Management_system
             sqlcon = new SqlConnection(connectionstrings);
         }
 
-        /////////////////////////////////////////////////////////Inserting data into the database//////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////Inserting data into the database//////////////////////////////////////////////////
        
 
         //inserting the user information into the database 
@@ -149,6 +149,7 @@ namespace Auction_Management_system
             }
             return dt;
         }
+        //searching for specific product
         public DataTable search_product(string title)
         {
             DataTable dt = new DataTable();
@@ -170,6 +171,7 @@ namespace Auction_Management_system
             return dt;
         }
 
+        //searching for a product in a specific category
         public DataTable Filter_by_category(string category)
         {
             DataTable dt = new DataTable();
@@ -190,6 +192,7 @@ namespace Auction_Management_system
             }
             return dt;
         }
+        // returns all the products found in a specific category
         public DataTable Get_categories()
         {
             DataTable dt = new DataTable();

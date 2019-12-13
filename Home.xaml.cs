@@ -74,8 +74,9 @@ namespace Auction_Management_system
         {
             var btn = (Button)sender;
             var x = (product)btn.Tag;
-            product_details pd = new product_details(x.Title);
+            product_details pd = new product_details(x.Title,x.price,x.photo,x.category);
             pd.Show();
+            this.Close();
         }
         private List<product> GetProducts()
         { 
@@ -90,12 +91,12 @@ namespace Auction_Management_system
                 img = (byte[])(dr["photo"]);
                 BitmapImage b= new BitmapImage();
                 b = bytes_to_image(img);
-                product p = new product(dr["Title"].ToString(),Convert.ToDouble (dr["price"]),b);
+                product p = new product(dr["Title"].ToString(),Convert.ToDouble (dr["price"]),b,dr["category"].ToString());
                 list.Add(p);
             }
             return list;    
         }
-        private List<product>Get_searched_Product()
+        private List<product>Get_Product_by_search()
         {
 
             DataTable dt = new DataTable();
@@ -109,7 +110,7 @@ namespace Auction_Management_system
                 img = (byte[])(dr["photo"]);
                 BitmapImage b = new BitmapImage();
                 b = bytes_to_image(img);
-                product p = new product(dr["Title"].ToString(), Convert.ToDouble(dr["price"]), b);
+                product p = new product(dr["Title"].ToString(), Convert.ToDouble(dr["price"]), b,dr["category"].ToString());
                 list.Add(p);
             }
             return list;
@@ -127,7 +128,7 @@ namespace Auction_Management_system
                 img = (byte[])(dr["photo"]);
                 BitmapImage b = new BitmapImage();
                 b = bytes_to_image(img);
-                product p = new product(dr["Title"].ToString(), Convert.ToDouble(dr["price"]), b);
+                product p = new product(dr["Title"].ToString(), Convert.ToDouble(dr["price"]), b,dr["category"].ToString());
                 list.Add(p);
             }
             return list;
@@ -144,7 +145,7 @@ namespace Auction_Management_system
 
         private void search_textbox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            var p = Get_searched_Product();
+            var p =Get_Product_by_search();
             if (p.Count > 0)
                 Listproduct.ItemsSource = p;
         }

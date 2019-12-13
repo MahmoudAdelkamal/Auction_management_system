@@ -22,11 +22,12 @@ namespace Auction_Management_system
         public double price { get; set; }
         public string category { get; set; }
         public BitmapImage photo { get; set; }
-        public product(string Title,double price,BitmapImage photo)
+        public product(string Title,double price,BitmapImage photo,string category)
         {
             this.Title = Title;
             this.photo = photo;
             this.price = price;
+            this.category = category;
         }
     }
 }

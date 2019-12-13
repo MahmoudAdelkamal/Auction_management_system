@@ -16,10 +16,20 @@ namespace Auction_Management_system
 {
     public partial class product_details : Window
     {
-        public product_details(string title)
+        public product_details(string title,double price,BitmapImage photo,string category)
         {
             InitializeComponent();
-            MessageBox.Show(title);
+            Title_textbox.Text = title;
+            price_textbox.Text = price.ToString();
+            product_img.Source = photo;
+            category_textbox.Text = category;
+        }
+
+        private void Home_Click(object sender, RoutedEventArgs e)
+        {
+            Home home = new Home();
+            home.Show();
+            this.Close();
         }
     }
 }
