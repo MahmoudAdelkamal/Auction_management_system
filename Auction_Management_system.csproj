@@ -105,11 +105,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Account.xaml.cs">
-      <DependentUpon>Account.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Create_session.xaml.cs">
       <DependentUpon>Create_session.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="editinformation.xaml.cs">
+      <DependentUpon>editinformation.xaml</DependentUpon>
     </Compile>
     <Compile Include="Home.xaml.cs">
       <DependentUpon>Home.xaml</DependentUpon>
@@ -117,9 +117,6 @@
     <Compile Include="product.cs" />
     <Compile Include="product_details.xaml.cs">
       <DependentUpon>product_details.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Result.xaml.cs">
-      <DependentUpon>Result.xaml</DependentUpon>
     </Compile>
     <Compile Include="Session.xaml.cs">
       <DependentUpon>Session.xaml</DependentUpon>
@@ -129,11 +126,12 @@
     </Compile>
     <Compile Include="sql_queries.cs" />
     <Compile Include="User.cs" />
-    <Page Include="Account.xaml">
+    <Compile Include="Validator.cs" />
+    <Page Include="Create_session.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Create_session.xaml">
+    <Page Include="editinformation.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -154,10 +152,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="product_details.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Result.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

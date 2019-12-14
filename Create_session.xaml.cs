@@ -28,7 +28,6 @@ namespace Auction_Management_system
             Home home = new Home();
             home.Show();
             this.Close();
-          
         }
         private void category_Click(object sender,EventArgs e)
         {

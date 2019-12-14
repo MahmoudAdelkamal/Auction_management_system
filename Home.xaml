@@ -14,16 +14,13 @@
         </Grid.RowDefinitions>
         <Grid Height="60" Background="#FF2196F3" VerticalAlignment="Top" Grid.RowSpan="2">
             <StackPanel Orientation="Horizontal">
-                <materialDesign:PopupBox Width="30" Height="30" Foreground="White">
-                </materialDesign:PopupBox>
-                <Button Click="home_Click" Height="50" Width="120" Content="Home" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="25" Margin="10 0 0 0">
+                <Button Click="home_Click"  Height="50" Width="120" Content="Home" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="25" Margin="10 0 0 0">
                 </Button>
-                <Button Click="account_Click"  Height="50" Width="170" Content="My account" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="25" Margin="75 0 0 0">
+                <Button Click="account_Click"  Height="50" Width="226" Content="Edit Information" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="25" Margin="75,5,0,5">
                 </Button>
                 <Button Click="Create_session_Click" Height="50" Width="190" Content="create session" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="25" Margin="75 0 0 0">
                 </Button>
-                <Button Click="Logout_Click" Height="50" Width="170" Content="Logout" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="25" Margin="75 0 0 0">
-                </Button>
+                <Button Click="Logout_Click" Height="50" Width="186" Content="Logout" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="25" Margin="75,5,0,5"/>
             </StackPanel>
         </Grid>
         <ScrollViewer  HorizontalAlignment="Left" Height="644" Margin="10,87,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="1334">
@@ -34,12 +31,12 @@
                             <Border>
                                 <StackPanel Margin="10 40 0 0">
                                     <Image Name="product_image" Height="130"  Source="{Binding photo}" Margin="30,0,102,0" />
-                                    <TextBlock  Text="{Binding Title}" x:Name="Title_textblock" Margin="5" Foreground="#FF2196F3"   FontSize="34" FontWeight="Bold" Height="52"/>
+                                    <TextBlock  Text="{Binding Title}"  x:Name="Title_textblock" Margin="5" Foreground="#FF2196F3"   FontSize="34" FontWeight="Bold" Height="52"/>
                                     <StackPanel Orientation="Horizontal">
                                         <TextBlock Text="$" FontSize="34" FontWeight="Bold" Height="52"/>
                                         <TextBlock Text= "{Binding price}" Margin="5 0" FontSize="34"  FontWeight="Bold" Height="52"/>
                                     </StackPanel>
-                                    <Button Tag="{Binding}"  Content="Join session" Click="join" Width="250"  FontSize="25" FontWeight="Bold" Height="38" Background="#FFC944" HorizontalAlignment="Left"/>
+                                    <Button Tag="{Binding}" Click="join" Content="show status" Width="250"  FontSize="25" FontWeight="Bold" Height="38" Background="#FFC944" HorizontalAlignment="Left"/>
                                     <Button Tag="{Binding}" Click="details_Click" Content="Details" Width="250"  FontSize="25" FontWeight="Bold" Height="38" Background="#FFC944" HorizontalAlignment="Left"/>
                                 </StackPanel>
                             </Border>
@@ -53,9 +50,10 @@
                 </ItemsControl>
             </StackPanel>
         </ScrollViewer>
-        <TextBox x:Name="search_textbox" TextChanged="search_textbox_TextChanged" MouseDoubleClick="search_textbox_MouseDoubleClick_1" HorizontalAlignment="Left" Height="39" Margin="803,65,0,0" Grid.RowSpan="2" TextWrapping="Wrap" Text="" Foreground="Gray" FontSize="20" VerticalAlignment="Top" Width="304"/>
-        <ComboBox x:Name="Category_Combobox" HorizontalAlignment="Left" Margin="1144,76,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="163" SelectionChanged="Category_Combobox_SelectionChanged">
-
+        <TextBox x:Name="search_textbox" TextChanged="search_textbox_TextChanged" MouseDoubleClick="search_textbox_MouseDoubleClick_1" HorizontalAlignment="Left" Height="39" Margin="779,65,0,0" Grid.RowSpan="2" TextWrapping="Wrap" Text="" Foreground="Gray" FontSize="20" VerticalAlignment="Top" Width="304"/>
+        <ComboBox x:Name="Category_Combobox" HorizontalAlignment="Left" Margin="1149,76,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="163" SelectionChanged="Category_Combobox_SelectionChanged">
         </ComboBox>
+        <materialDesign:PackIcon Kind="Search" Height="Auto" Width="71" Foreground="#FF2196F3" RenderTransformOrigin="4.413,2.613" VerticalAlignment="Stretch" Margin="703,76,0,650.4" Grid.RowSpan="2"/>
+        <materialDesign:PopupBox Width="43" Height="40" Foreground="#FF2196F3" Margin="1101,76,0,654.4" RenderTransformOrigin="0.884,0.747" Grid.RowSpan="2"/>
     </Grid>
 </Window>

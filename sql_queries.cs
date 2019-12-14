@@ -27,7 +27,7 @@ namespace Auction_Management_system
             sqlcon = new SqlConnection(connectionstrings);
         }
 
-        ////////////////////////////////////////////////////////////Inserting data into the database//////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////////////Inserting data into the database//////////////////////////////////////////////////
 
 
         //inserting the user information into the database 
@@ -124,6 +124,26 @@ namespace Auction_Management_system
                 sqlcon.Close();
             }
             return dt.Rows.Count > 0;
+        }
+        public DataTable profilename(string username)
+        {
+            DataTable dt = new DataTable();
+            string query = "select * from UserInformation where username = '" + username + "'";
+            try
+            {
+                sqlcon.Open();
+                SqlDataAdapter sda = new SqlDataAdapter(query, sqlcon);
+                sda.Fill(dt);
+            }
+            catch(SqlException exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
+            finally
+            {
+                sqlcon.Close();
+            }
+            return dt;
         }
 
         /////////////////////////////////////////////////////////////////Retrieving data from the database//////////////////////////////////////////////////////
@@ -227,9 +247,27 @@ namespace Auction_Management_system
             return dt;
         }
         ///////////////////////////////////////////////////////Update queries////////////////////////////////////////////////
-        public void update_top_price(double value,int Id,string username)
+        public void update_top_price(double value, int Id, string username)
         {
-            string query = "update product set price = " + value +", Winner ='" +username +"'" + "where id =" + Id;
+            string query = "update product set price = " + value + ", Winner ='" + username + "'" + "where id =" + Id;
+            try
+            {
+                sqlcon.Open();
+                SqlCommand sqlcmd = new SqlCommand(query, sqlcon);
+                sqlcmd.ExecuteNonQuery();
+            }
+            catch (SqlException exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
+            finally
+            {
+                sqlcon.Close();
+            }
+        }
+        public void update_user(string new_name,string old_name,string type)
+        {
+            string query = "update UserInformation set " + type + "= '" + new_name + "'"+"where "+type+"= '"+old_name+"'";
             try
             {
                 sqlcon.Open();

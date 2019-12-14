@@ -1,0 +1,33 @@
+﻿<Window x:Class="Auction_Management_system.editinformation"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://s...content-available-to-author-only...s.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Auction_Management_system"
+        Title="editinformation" Height="800" Width="1360" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid Height="60" Background="#FF2196F3" VerticalAlignment="Top" Grid.RowSpan="2">
+            <StackPanel Orientation="Horizontal">
+                <Button Click="Home_Click"  Height="50" Width="120" Content="Home" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="25" Margin="10 0 0 0">
+                </Button>
+                <Button   Height="50" Width="226" Content="Edit Information" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="25" Margin="75,5,0,5">
+                </Button>
+                <Button Click="Create_session_Click" Height="50" Width="190"  Content="create session" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="25" Margin="75 0 0 0">
+                </Button>
+                <Button Click="Logout_Click" Height="50" Width="186" Content="Logout" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="25" Margin="75,5,0,5"/>
+            </StackPanel>
+        </Grid>
+        <TextBlock HorizontalAlignment="Left" FontSize="25" FontWeight="Bold" Margin="335,129,0,0" TextWrapping="Wrap" x:Name="username_block" VerticalAlignment="Top" Height="53" Width="169"/>
+        <Label Content="Username" HorizontalAlignment="Left" FontWeight="Bold" FontSize="25" Margin="102,129,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.319,0.338"/>
+        <Label Content="Profile name" HorizontalAlignment="Left" FontSize="25" FontWeight="Bold" Margin="834,129,0,0" VerticalAlignment="Top"/>
+        <TextBlock  FontSize="25" FontWeight="Bold" Margin="1095,129,-0.4,0" TextWrapping="Wrap" x:Name="profilename_block" VerticalAlignment="Top" Height="53" Width="169"/>
+
+        <Button Click="username_Click" FontSize="25" Content="Edit Username" Margin="299,411,0,313.4" HorizontalAlignment="Left" Width="241" Height="Auto" RenderTransformOrigin="0.516,0.787" ></Button>
+        <TextBox HorizontalAlignment="Left" x:Name="username_textbox" Height="34" Margin="574,411,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" FontSize="25" Width="255"/>
+        <Button Click="Profilename_Click" FontSize="25" Content="Edit profile name"  HorizontalAlignment="Left" Margin="299,512,0,0" VerticalAlignment="Top" Width="241" Height="44"/>
+        <TextBox HorizontalAlignment="Left" Margin="574,522,0,0" x:Name="profile_name_textbox" VerticalAlignment="Top" Height="34" Width="255"/>
+        <Button Click="password_Click" FontSize="25" Content="Edit password" HorizontalAlignment="Left" Margin="299,620,0,0" VerticalAlignment="Top" Width="241" Height="44"/>
+        <TextBox HorizontalAlignment="Left" Margin="574,630,0,0" x:Name="password_box" VerticalAlignment="Top" Height="34" Width="255"/>
+
+    </Grid>
+</Window>

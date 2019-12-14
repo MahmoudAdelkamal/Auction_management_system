@@ -17,13 +17,11 @@ namespace Auction_Management_system
     public partial class Session : Window
     {
         private int Id;
-        private string username;
         private string Winner;
         private double current_price;
-        public Session(int Id,BitmapImage b , string title,string Winner,double current_price)
-        {
+        public Session(int Id,BitmapImage b,string title,string Winner,double current_price)
+        { 
             InitializeComponent();
-            this.username = User.username;
             this.Id = Id;
             this.Winner = Winner;
             this.current_price = current_price;
@@ -49,7 +47,6 @@ namespace Auction_Management_system
         {
             MessageBox.Show("The current price is " + current_price.ToString());
         }
-
         private void Bid_Click(object sender, RoutedEventArgs e)
         {
             if (current_price_textbox.Text.Length == 0)
@@ -64,7 +61,7 @@ namespace Auction_Management_system
             {
                 current_price = Convert.ToDouble(current_price_textbox.Text);
                 sql_queries query = new sql_queries("Data Source=(local);Initial Catalog=Auction_mangement_system;Integrated Security=True");
-                query.update_top_price(current_price,Id,username);
+                query.update_top_price(current_price,Id,User.profilename);
             }
                 current_price_textbox.Text = "";
         }

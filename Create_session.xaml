@@ -23,7 +23,7 @@
                 </materialDesign:PopupBox>
                 <Button Click="Home_Click" Height="50" Width="120" Content="Home" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="25" Margin="30 0 0 0">
                 </Button>
-                <Button Click="account_Click" Height="50" Width="170" Content="My account" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="25" Margin="150 0 0 0">
+                <Button Click="account_Click" Height="50" Width="225" Content="Edit Information" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="25" Margin="150 0 0 0">
                 </Button>
                 <Button Click="Create_session_Click" Height="50" Width="190" Content="create session" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="25" Margin="150 0 0 0">
                 </Button>
@@ -38,7 +38,7 @@
                     <Button Click="sumbit_Click" Margin="406,693,0,-734" Content="Submit" Background="SkyBlue" RenderTransformOrigin="0.475,1.364" HorizontalAlignment="Left" Width="236" Foreground="White" FontSize="25" FontWeight="ExtraBold" Height="Auto"/>
                 </Grid>
                 <!-- Title -->
-                <Grid>
+                <Grid Height="49">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="28*"/>
                         <ColumnDefinition Width="61*"/>

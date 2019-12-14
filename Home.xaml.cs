@@ -20,11 +20,9 @@ namespace Auction_Management_system
 {
     public partial class Home : Window
     {
-        private string username;
         public Home()
         {
             InitializeComponent();
-            username = User.username;
             var products = GetProducts();
             if (products.Count > 0)
                 Listproduct.ItemsSource = products;
@@ -50,8 +48,8 @@ namespace Auction_Management_system
         }
         private void account_Click(object sender, EventArgs e)
         {
-            Account account = new Account();
-            account.Show();
+            editinformation en = new editinformation();
+            en.Show();
             this.Close();
         }
         private void Logout_Click(object sender, EventArgs e)
@@ -76,9 +74,9 @@ namespace Auction_Management_system
         {
             var btn = (Button)sender;
             var x = (product)btn.Tag;
-            MessageBox.Show(x.Winner);
-            //product_details pd = new product_details(x.Title, x.price, x.photo, x.category);
-            //pd.Show();
+           // MessageBox.Show(x.Winner);
+            product_details pd = new product_details(x.Title, x.price, x.photo, x.category);
+            pd.Show();
         }
         private List<product> GetProducts()
         {
@@ -129,7 +127,7 @@ namespace Auction_Management_system
                 img = (byte[])(dr["photo"]);
                 BitmapImage b = new BitmapImage();
                 b = bytes_to_image(img);
-                product p = new product(Convert.ToInt32(dr["ID"]), dr["Winner"].ToString(), dr["Title"].ToString(), Convert.ToDouble(dr["price"]), b, dr["category"].ToString(),dr["start_date"].ToString(),dr["end_date"].ToString());
+                product p = new product(Convert.ToInt32(dr["ID"]), dr["Winner"].ToString(), dr["Title"].ToString(),Convert.ToDouble(dr["price"]), b, dr["category"].ToString(),dr["start_date"].ToString(),dr["end_date"].ToString());
                 list.Add(p);
             }
             return list;
@@ -157,29 +155,29 @@ namespace Auction_Management_system
             if (p.Count > 0)
                 Listproduct.ItemsSource = p;
         }
-
         private void join(object sender, RoutedEventArgs e)
         {
-
-            var btn=(Button)sender;
+            sql_queries query = new sql_queries("Data Source=(local);Initial Catalog=Auction_mangement_system;Integrated Security=True");
+            var btn = (Button)sender;
             var x = (product)btn.Tag;
             DateTime Start = Convert.ToDateTime(x.start_date);
             DateTime End = Convert.ToDateTime(x.end_date);
             int t1 = DateTime.Compare(Start, DateTime.Now);
             int t2 = DateTime.Compare(DateTime.Now, End);
             if (t1 > 0)
-               MessageBox.Show("The session didn't start yet");
-            else if(t2 < 0)
             {
-                Session session = new Session(x.Id,x.photo,x.Title,x.Winner,x.price);
+                MessageBox.Show("The session didn't start yet");         
+            }
+            else if (t2 < 0)
+            {
+                Session session = new Session(x.Id, x.photo, x.Title, x.Winner, x.price);
                 session.Show();
                 this.Close();
             }
-            else if(t2 > 0)
+            else if (t2 > 0)
             {
-                Result result = new Result();
-                result.Show();
-                this.Close();
+                
+               MessageBox.Show("The winner is " + x.Winner);
             }
         }
     }

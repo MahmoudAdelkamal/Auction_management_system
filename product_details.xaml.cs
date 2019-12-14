@@ -24,7 +24,5 @@ namespace Auction_Management_system
             product_img.Source = photo;
             category_textbox.Text = category;
         }
-
-        
     }
 }
