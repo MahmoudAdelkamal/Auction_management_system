@@ -36,8 +36,16 @@ namespace Auction_Management_system
             try
             {
                 sqlcon.Open();
-                string query = "insert into UserInformation (username,profile_name,password) values('" + username + "','" + profilename + "','" + password + "'" + ")";
+                string query = "Sign_Up";
                 SqlCommand sqlcmd = new SqlCommand(query, sqlcon);
+                sqlcmd.CommandType = CommandType.StoredProcedure;
+                SqlParameter sqlParameter = new SqlParameter("@username", username);
+                sqlcmd.Parameters.Add(sqlParameter);
+                SqlParameter parameter = new SqlParameter("@profilename", profilename);
+                sqlcmd.Parameters.Add(parameter);
+                SqlParameter parameter2 = new SqlParameter("@password", password);
+                sqlcmd.Parameters.Add(parameter2);
+
                 sqlcmd.ExecuteNonQuery();
             }
             catch (SqlException exception)
@@ -59,9 +67,10 @@ namespace Auction_Management_system
             try
             {
                 sqlcon.Open();
-                string query = "insert into product(Title,price,category,Descriptions,photo,start_date,end_date) values(@Title,@price,@category,@description,@image,@start,@end)";
+                string query = "Insert_product";
                 SqlCommand sqlcmd;
                 sqlcmd = new SqlCommand(query, sqlcon);
+                sqlcmd.CommandType = CommandType.StoredProcedure;
                 sqlcmd.Parameters.Add(new SqlParameter("@Title", Title));
                 sqlcmd.Parameters.Add(new SqlParameter("@price", price));
                 sqlcmd.Parameters.Add(new SqlParameter("@category", category));
@@ -90,8 +99,12 @@ namespace Auction_Management_system
             try
             {
                 sqlcon.Open();
-                string query = "select username from UserInformation where username=" + "'" + name + "'";
+                string query = "check_username";
+                SqlCommand cmd = new SqlCommand(query, sqlcon);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add(new SqlParameter("@name", name));
                 SqlDataAdapter sda = new SqlDataAdapter(query, sqlcon);
+                sda.SelectCommand = cmd;
                 sda.Fill(dt);
             }
             catch (SqlException exception)
@@ -111,8 +124,13 @@ namespace Auction_Management_system
             try
             {
                 sqlcon.Open();
-                string query = "select username,password from UserInformation where username=" + "'" + name + "'" + "and password=" + "'" + password + "'";
+                string query = "check_username_and_password";
+                SqlCommand cmd = new SqlCommand(query, sqlcon);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add(new SqlParameter("@name", name));
+                cmd.Parameters.Add(new SqlParameter("@password", password));
                 SqlDataAdapter sda = new SqlDataAdapter(query, sqlcon);
+                sda.SelectCommand = cmd;
                 sda.Fill(dt);
             }
             catch (SqlException exception)
@@ -125,6 +143,31 @@ namespace Auction_Management_system
             }
             return dt.Rows.Count > 0;
         }
+
+        public void Delete_user(string name)
+        {
+            try
+            {
+                sqlcon.Open();
+                string query = "delete from UserInformation where username = '" + name + "'";
+                SqlCommand cmd = new SqlCommand(query, sqlcon);
+                cmd.ExecuteNonQuery();
+
+
+            }
+            catch (SqlException exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
+            finally
+            {
+                sqlcon.Close();
+            }
+
+        }
+
+        /////////////////////////////////////////////////////////////////Retrieving data from the database//////////////////////////////////////////////////////
+
         public DataTable profilename(string username)
         {
             DataTable dt = new DataTable();
@@ -221,10 +264,99 @@ namespace Auction_Management_system
             }
             return dt;
         }
-        public void g()
+        //------------------------------ check catagory ---------------------------//
+    public bool check_catagory(string catagory)
+    {
+        DataTable dt = new DataTable();
+        try
         {
+            sqlcon.Open();
+            string query = "check_category";
+            SqlCommand cmd = new SqlCommand(query, sqlcon);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add(new SqlParameter("@category", catagory));
+            SqlDataAdapter sda = new SqlDataAdapter(query, sqlcon);
+            sda.SelectCommand = cmd;
+            sda.Fill(dt);
+        }
+        catch (SqlException exception)
+        {
+            MessageBox.Show(exception.Message);
+        }
+        finally
+        {
+            sqlcon.Close();
+        }
+        return dt.Rows.Count > 0;
+    }
+        ////// delete catagory////////////// 
+        public void Delete_catagory(string catagory)
+        {
+            try
+            {
+                sqlcon.Open();
+                string query = "delete from Category where category_name = '" + catagory + "'";
+                SqlCommand cmd = new SqlCommand(query, sqlcon);
+
+                cmd.ExecuteNonQuery();
+
+            }
+            catch (SqlException exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
+            finally
+            {
+                sqlcon.Close();
+            }
 
         }
+        // update 
+        public void update_catagories(string catagory)
+        {
+            try
+            {
+                sqlcon.Open();
+                string query = "update product set category = 'others' where category= '" + catagory + "'";
+                SqlCommand cmd = new SqlCommand(query, sqlcon);
+
+                cmd.ExecuteNonQuery();
+
+            }
+            catch (SqlException exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
+            finally
+            {
+                sqlcon.Close();
+            }
+
+        }
+
+        // add catagory
+        public void Add_catagory(string catagory)
+        {
+            try
+            {
+                sqlcon.Open();
+                string query = "insert into Category values ( '" + catagory + "')";
+                SqlCommand cmd = new SqlCommand(query, sqlcon);
+
+                cmd.ExecuteNonQuery();
+
+            }
+            catch (SqlException exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
+            finally
+            {
+                sqlcon.Close();
+            }
+
+        }
+       
         // returns all the products found in a specific category
         public DataTable Get_categories()
         {

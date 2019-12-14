@@ -31,6 +31,12 @@ namespace Auction_Management_system
             {
                 MessageBox.Show("Invalid username or password");
             }
+            else if (username_login_textbox.Text.ToLower()=="admin")
+            {
+                Admin_Home admin_Home = new Admin_Home();
+                admin_Home.Show();
+                this.Close();
+            }
             else
             {
                 DataTable dt = new DataTable();

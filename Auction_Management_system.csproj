@@ -105,6 +105,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AddCategoryTextBox.xaml.cs">
+      <DependentUpon>AddCategoryTextBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Admin_Home.xaml.cs">
+      <DependentUpon>Admin_Home.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Admin_Window.xaml.cs">
+      <DependentUpon>Admin_Window.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Create_session.xaml.cs">
       <DependentUpon>Create_session.xaml</DependentUpon>
     </Compile>
@@ -118,6 +127,12 @@
     <Compile Include="product_details.xaml.cs">
       <DependentUpon>product_details.xaml</DependentUpon>
     </Compile>
+    <Compile Include="RemoveCategoryTextBox.xaml.cs">
+      <DependentUpon>RemoveCategoryTextBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RemoveUserBox.xaml.cs">
+      <DependentUpon>RemoveUserBox.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Session.xaml.cs">
       <DependentUpon>Session.xaml</DependentUpon>
     </Compile>
@@ -127,6 +142,18 @@
     <Compile Include="sql_queries.cs" />
     <Compile Include="User.cs" />
     <Compile Include="Validator.cs" />
+    <Page Include="AddCategoryTextBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Admin_Home.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Admin_Window.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Create_session.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -154,6 +181,14 @@
     <Page Include="product_details.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RemoveCategoryTextBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="RemoveUserBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Session.xaml">
       <SubType>Designer</SubType>
