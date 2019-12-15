@@ -75,7 +75,7 @@ namespace Auction_Management_system
             var btn = (Button)sender;
             var x = (product)btn.Tag;
            // MessageBox.Show(x.Winner);
-            product_details pd = new product_details(x.Title, x.price, x.photo, x.category);
+            product_details pd = new product_details(x.Title, x.price, x.photo, x.category,x.description,x.start_date,x.end_date);
             pd.Show();
         }
         private List<product> GetProducts()
@@ -91,7 +91,7 @@ namespace Auction_Management_system
                 img = (byte[])(dr["photo"]);
                 BitmapImage b = new BitmapImage();
                 b = bytes_to_image(img);
-                product p = new product(Convert.ToInt32(dr["ID"]),dr["Winner"].ToString(), dr["Title"].ToString(), Convert.ToDouble(dr["price"]), b, dr["category"].ToString(), dr["start_date"].ToString(), dr["end_date"].ToString());
+                product p = new product(Convert.ToInt32(dr["ID"]),dr["Winner"].ToString(),dr["seller"].ToString(),dr["Title"].ToString(), Convert.ToDouble(dr["price"]), b, dr["category"].ToString(), dr["start_date"].ToString(), dr["end_date"].ToString(),dr["Descriptions"].ToString());
                 list.Add(p);
             }
             return list;
@@ -109,7 +109,7 @@ namespace Auction_Management_system
                 img = (byte[])(dr["photo"]);
                 BitmapImage b = new BitmapImage();
                 b = bytes_to_image(img);
-                product p = new product(Convert.ToInt32(dr["ID"]), dr["Winner"].ToString(), dr["Title"].ToString(), Convert.ToDouble(dr["price"]), b, dr["category"].ToString(), dr["start_date"].ToString(), dr["end_date"].ToString());
+                product p = new product(Convert.ToInt32(dr["ID"]), dr["Winner"].ToString(),dr["seller"].ToString(), dr["Title"].ToString(), Convert.ToDouble(dr["price"]), b, dr["category"].ToString(), dr["start_date"].ToString(), dr["end_date"].ToString(),dr["Descriptions"].ToString());
                 list.Add(p);
             }
             return list;
@@ -127,7 +127,7 @@ namespace Auction_Management_system
                 img = (byte[])(dr["photo"]);
                 BitmapImage b = new BitmapImage();
                 b = bytes_to_image(img);
-                product p = new product(Convert.ToInt32(dr["ID"]), dr["Winner"].ToString(), dr["Title"].ToString(),Convert.ToDouble(dr["price"]), b, dr["category"].ToString(),dr["start_date"].ToString(),dr["end_date"].ToString());
+                product p = new product(Convert.ToInt32(dr["ID"]), dr["Winner"].ToString(), dr["seller"].ToString(), dr["Title"].ToString(),Convert.ToDouble(dr["price"]), b, dr["category"].ToString(),dr["start_date"].ToString(),dr["end_date"].ToString(),dr["Descriptions"].ToString());
                 list.Add(p);
             }
             return list;
@@ -136,7 +136,6 @@ namespace Auction_Management_system
         {
 
         }
-
         private void search_textbox_MouseDoubleClick_1(object sender, MouseButtonEventArgs e)
         {
             search_textbox.Text = "";
@@ -157,28 +156,11 @@ namespace Auction_Management_system
         }
         private void join(object sender, RoutedEventArgs e)
         {
-            sql_queries query = new sql_queries("Data Source=(local);Initial Catalog=Auction_mangement_system;Integrated Security=True");
             var btn = (Button)sender;
             var x = (product)btn.Tag;
-            DateTime Start = Convert.ToDateTime(x.start_date);
-            DateTime End = Convert.ToDateTime(x.end_date);
-            int t1 = DateTime.Compare(Start, DateTime.Now);
-            int t2 = DateTime.Compare(DateTime.Now, End);
-            if (t1 > 0)
-            {
-                MessageBox.Show("The session didn't start yet");         
-            }
-            else if (t2 < 0)
-            {
-                Session session = new Session(x.Id, x.photo, x.Title, x.Winner, x.price);
-                session.Show();
-                this.Close();
-            }
-            else if (t2 > 0)
-            {
-                
-               MessageBox.Show("The winner is " + x.Winner);
-            }
+            sql_queries query = new sql_queries("Data Source=(local);Initial Catalog=Auction_mangement_system;Integrated Security=True");
+            query.delete_product(x.Id);
+            MessageBox.Show("Deleted Successfully");
         }
 
         private void Manage_click(object sender, RoutedEventArgs e)

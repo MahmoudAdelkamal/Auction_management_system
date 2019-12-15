@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.IO;
+using System.Media;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -75,8 +76,9 @@ namespace Auction_Management_system
             var btn = (Button)sender;
             var x = (product)btn.Tag;
            // MessageBox.Show(x.Winner);
-            product_details pd = new product_details(x.Title, x.price, x.photo, x.category);
+            product_details pd = new product_details(x.Title, x.price, x.photo, x.category,x.description,x.start_date,x.end_date);
             pd.Show();
+            this.Close();
         }
         private List<product> GetProducts()
         {
@@ -91,7 +93,7 @@ namespace Auction_Management_system
                 img = (byte[])(dr["photo"]);
                 BitmapImage b = new BitmapImage();
                 b = bytes_to_image(img);
-                product p = new product(Convert.ToInt32(dr["ID"]),dr["Winner"].ToString(), dr["Title"].ToString(), Convert.ToDouble(dr["price"]), b, dr["category"].ToString(), dr["start_date"].ToString(), dr["end_date"].ToString());
+                product p = new product(Convert.ToInt32(dr["ID"]),dr["Winner"].ToString(),dr["seller"].ToString(), dr["Title"].ToString(), Convert.ToDouble(dr["price"]), b, dr["category"].ToString(), dr["start_date"].ToString(), dr["end_date"].ToString(),dr["Descriptions"].ToString());
                 list.Add(p);
             }
             return list;
@@ -109,7 +111,7 @@ namespace Auction_Management_system
                 img = (byte[])(dr["photo"]);
                 BitmapImage b = new BitmapImage();
                 b = bytes_to_image(img);
-                product p = new product(Convert.ToInt32(dr["ID"]), dr["Winner"].ToString(), dr["Title"].ToString(), Convert.ToDouble(dr["price"]), b, dr["category"].ToString(), dr["start_date"].ToString(), dr["end_date"].ToString());
+                product p = new product(Convert.ToInt32(dr["ID"]), dr["Winner"].ToString(), dr["seller"].ToString() ,dr["Title"].ToString(), Convert.ToDouble(dr["price"]), b, dr["category"].ToString(), dr["start_date"].ToString(), dr["end_date"].ToString(),dr["Descriptions"].ToString());
                 list.Add(p);
             }
             return list;
@@ -127,7 +129,7 @@ namespace Auction_Management_system
                 img = (byte[])(dr["photo"]);
                 BitmapImage b = new BitmapImage();
                 b = bytes_to_image(img);
-                product p = new product(Convert.ToInt32(dr["ID"]), dr["Winner"].ToString(), dr["Title"].ToString(),Convert.ToDouble(dr["price"]), b, dr["category"].ToString(),dr["start_date"].ToString(),dr["end_date"].ToString());
+                product p = new product(Convert.ToInt32(dr["ID"]), dr["Winner"].ToString(), dr["seller"].ToString(), dr["Title"].ToString(),Convert.ToDouble(dr["price"]), b, dr["category"].ToString(),dr["start_date"].ToString(),dr["end_date"].ToString(),dr["Descriptions"].ToString());
                 list.Add(p);
             }
             return list;
@@ -157,6 +159,7 @@ namespace Auction_Management_system
         }
         private void join(object sender, RoutedEventArgs e)
         {
+            
             sql_queries query = new sql_queries("Data Source=(local);Initial Catalog=Auction_mangement_system;Integrated Security=True");
             var btn = (Button)sender;
             var x = (product)btn.Tag;
@@ -170,14 +173,33 @@ namespace Auction_Management_system
             }
             else if (t2 < 0)
             {
-                Session session = new Session(x.Id, x.photo, x.Title, x.Winner, x.price);
-                session.Show();
-                this.Close();
+                if (User.username == x.seller)
+                    MessageBox.Show("The seller can't bid for his product ! ");
+                else
+                {
+                    Session session = new Session(x.Id, x.photo, x.Title, x.Winner, x.price);
+                    session.Show();
+                    this.Close();
+                }
             }
             else if (t2 > 0)
             {
-                
-               MessageBox.Show("The winner is " + x.Winner);
+
+                if (x.Winner == "")
+                    MessageBox.Show("No Participants !");
+                else if (x.Winner == User.username)
+                {
+                    SoundPlayer soundPlayer = new SoundPlayer("app-30.wav");
+                    soundPlayer.LoadAsync();
+                    soundPlayer.Play();
+                    Result res = new Result(x.photo, x.Title, x.price, x.Winner);
+                    res.Show();
+                }
+                else
+                {
+                    Result res = new Result(x.photo, x.Title, x.price, x.Winner);
+                    res.Show();
+                }
             }
         }
     }

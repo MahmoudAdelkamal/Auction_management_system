@@ -58,7 +58,7 @@ namespace Auction_Management_system
             }
         }
         //inserting the product information into the database
-        public void insert_product_info(string Title, double price, string category, string description, string image_location, string startdate, string enddate)
+        public void insert_product_info(string Title, double price, string category, string description, string image_location, string startdate, string enddate,string seller)
         {
             byte[] image = null;
             FileStream fs = new FileStream(image_location, FileMode.Open, FileAccess.Read);
@@ -78,6 +78,7 @@ namespace Auction_Management_system
                 sqlcmd.Parameters.Add(new SqlParameter("@image", image));
                 sqlcmd.Parameters.Add(new SqlParameter("@start", startdate));
                 sqlcmd.Parameters.Add(new SqlParameter("@end", enddate));
+                sqlcmd.Parameters.Add(new SqlParameter("@seller", seller));
                 sqlcmd.ExecuteNonQuery();
             }
             catch (SqlException exception)
@@ -407,6 +408,25 @@ namespace Auction_Management_system
                 sqlcmd.ExecuteNonQuery();
             }
             catch (SqlException exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
+            finally
+            {
+                sqlcon.Close();
+            }
+        }
+        /////////////////////////////////////////Deleting queries////////////////////////////////////////////////////////////
+        public void delete_product(int id)
+        {
+            string query = "delete from product where id = " + id;
+            try
+            {
+                sqlcon.Open();
+                SqlCommand cmd = new SqlCommand(query, sqlcon);
+                cmd.ExecuteNonQuery();
+            }
+            catch(SqlException exception)
             {
                 MessageBox.Show(exception.Message);
             }

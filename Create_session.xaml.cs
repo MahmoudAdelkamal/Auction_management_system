@@ -13,15 +13,22 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Data.SqlClient;
-
+using System.Data;
 namespace Auction_Management_system
 {
     public partial class Create_session : Window
     {
-        private string imgloc="";
+        sql_queries query = new sql_queries("Data Source=(local);Initial Catalog=Auction_mangement_system;Integrated Security=True");
+        private string imgloc = "";
         public Create_session()
         {
             InitializeComponent();
+            DataTable dt = new DataTable();
+            dt = query.Get_categories();
+            foreach(DataRow dr in dt.Rows)
+            {
+                category_textbox.Items.Add(dr["category_name"]);
+            }
         }
         private void Home_Click(object sender, EventArgs e)
         {
@@ -29,11 +36,11 @@ namespace Auction_Management_system
             home.Show();
             this.Close();
         }
-        private void category_Click(object sender,EventArgs e)
+        private void category_Click(object sender, EventArgs e)
         {
 
         }
-        private void account_Click(object sender,EventArgs e)
+        private void account_Click(object sender, EventArgs e)
         {
 
         }
@@ -41,7 +48,7 @@ namespace Auction_Management_system
         {
 
         }
-        private void Logout_Click(object sender,EventArgs e)
+        private void Logout_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Are you sure you want to log out?", "Log out", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
             {
@@ -50,15 +57,15 @@ namespace Auction_Management_system
                 this.Close();
             }
         }
-        private void Browse_Click(object sender,EventArgs e)
+        private void Browse_Click(object sender, EventArgs e)
         {
-            Microsoft.Win32.OpenFileDialog dlg=new Microsoft.Win32.OpenFileDialog();
+            Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
             dlg.Filter = "JPEG|*.jpg";
             dlg.Title = "select product image";
             bool? res = dlg.ShowDialog();
-            if(res==true)
+            if (res == true)
             {
-                imgloc =dlg.FileName.ToString();
+                imgloc = dlg.FileName.ToString();
                 BitmapImage bitmap = new BitmapImage();
                 bitmap.BeginInit();
                 bitmap.UriSource = new Uri(imgloc);
@@ -72,8 +79,10 @@ namespace Auction_Management_system
             Description_textbox.Text = "";
             category_textbox.Text = "";
             price_textbox.Text = "";
-            datepicker1.SelectedDate= null;
+            datepicker1.SelectedDate = null;
             datepicker2.SelectedDate = null;
+            time1.SelectedTime = null;
+            time2.SelectedTime = null;
             product_img.Source = null;
         }
         private void sumbit_Click(object sender, EventArgs e)
@@ -110,17 +119,16 @@ namespace Auction_Management_system
             {
                 MessageBox.Show("The starting date should be a valid date !");
             }
-            else if (DateTime.Compare(dt1,dt2) > 0 )
+            else if (DateTime.Compare(dt1, dt2) > 0)
             {
                 MessageBox.Show("The end date couldn't be earlier than the start date ! ");
             }
             else
             {
-                sql_queries query = new sql_queries("Data Source=(local);Initial Catalog=Auction_mangement_system;Integrated Security=True");
-                query.insert_product_info(Title_textbox.Text, Convert.ToDouble(price_textbox.Text), category_textbox.Text, Description_textbox.Text, imgloc, startdate,enddate);
+                query.insert_product_info(Title_textbox.Text, Convert.ToDouble(price_textbox.Text), category_textbox.Text, Description_textbox.Text, imgloc, startdate, enddate,User.username);
                 MessageBox.Show("The product has been submitted to the Admin");
                 clear();
-            }   
+            }
         }
     }
 }

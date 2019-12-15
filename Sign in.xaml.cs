@@ -44,6 +44,7 @@ namespace Auction_Management_system
                 User.profilename = dt.Rows[0]["profile_name"].ToString();
                 User.username = dt.Rows[0]["username"].ToString();
                 User.password = dt.Rows[0]["password"].ToString();
+              //  MessageBox.Show("The username is " + User.username + "   and the profilename is " + User.profilename);
                 Home home = new Home();
                 home.Show();
                 this.Close();

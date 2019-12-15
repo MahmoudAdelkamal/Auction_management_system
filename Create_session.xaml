@@ -84,13 +84,6 @@
 
                     <TextBlock Text="Main category " FontWeight="Bold" FontSize="25" Margin="17,178,10.2,-182"/>
                     <ComboBox x:Name="category_textbox" Padding="2" Margin="17,229,96,445" Grid.ColumnSpan="3" FontSize="20" Height="37">
-                        <ComboBoxItem Content="Vehicles"/>
-                        <ComboBoxItem Content="Mobile"/>
-                        <ComboBoxItem Content="Electronics and Home Appliances"/>
-                        <ComboBoxItem Content="Home Furniture - Decor"/>
-                        <ComboBoxItem Content="Fashion and Beauty"/>
-                        <ComboBoxItem Content="Kids and Babies"/>
-                        <ComboBoxItem Content="Accessories"/>
                     </ComboBox>
                     <Button Click="Browse_Click" Content="Browse" Grid.Column="4" HorizontalAlignment="Left" Margin="67.2,260,0,0" VerticalAlignment="Top" Width="123" RenderTransformOrigin="0.021,0.963" Height="50" Foreground="White" FontWeight="ExtraBold" FontSize="25"/>
                     <TextBlock Grid.ColumnSpan="2" Grid.Column="2" HorizontalAlignment="Left" Margin="481,0,0,0" TextWrapping="Wrap" Text="Image" VerticalAlignment="Top" FontSize="25" FontWeight="Bold" Width="82"/>
@@ -99,8 +92,8 @@
                     <TextBlock Grid.Column="2" HorizontalAlignment="Left" Margin="519,408,0,0" TextWrapping="Wrap" Text="Session start-date" VerticalAlignment="Top" Height="32" Width="244" FontSize="25" FontWeight="Bold" RenderTransformOrigin="0.086,0.65" Grid.ColumnSpan="3"/>
                     <TextBlock Grid.Column="2" HorizontalAlignment="Left" Margin="519,560,0,0" TextWrapping="Wrap" Text="Session end-date" VerticalAlignment="Top" Height="32" Width="244" FontSize="25" FontWeight="Bold" RenderTransformOrigin="0.519,-0.362" Grid.ColumnSpan="3"/>
                     <DatePicker x:Name="datepicker2"  Focusable="False" Grid.Column="4" HorizontalAlignment="Left" Margin="181.2,562,0,0" VerticalAlignment="Top" Width="207"/>
-                    <materialDesign:TimePicker x:Name="time1" Grid.Column="4" Margin="183.2,455,69,224" Height="32" />
-                    <materialDesign:TimePicker x:Name="time2" Grid.Column="4" Margin="181.2,597,71,89" Height="25" />
+                    <materialDesign:TimePicker Is24Hours="True" Text=""  x:Name="time1" Grid.Column="4" Margin="183.2,455,69,224" Height="32" />
+                    <materialDesign:TimePicker Is24Hours="True" Text="" x:Name="time2" Grid.Column="4" Margin="181.2,597,71,89" Height="25" />
                 </Grid>
                 <!-- Description -->
             </StackPanel>

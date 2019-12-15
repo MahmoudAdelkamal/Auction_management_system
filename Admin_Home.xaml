@@ -34,7 +34,7 @@
                                         <TextBlock Text="$" FontSize="34" FontWeight="Bold" Height="52"/>
                                         <TextBlock Text= "{Binding price}" Margin="5 0" FontSize="34"  FontWeight="Bold" Height="52"/>
                                     </StackPanel>
-                                    <Button Tag="{Binding}" Click="join" Content="show status" Width="250"  FontSize="25" FontWeight="Bold" Height="38" Background="#FFC944" HorizontalAlignment="Left"/>
+                                    <Button Tag="{Binding}" Click="join" Content="Delete" Width="250"  FontSize="25" FontWeight="Bold" Height="38" Background="#FFC944" HorizontalAlignment="Left"/>
                                     <Button Tag="{Binding}" Click="details_Click" Content="Details" Width="250"  FontSize="25" FontWeight="Bold" Height="38" Background="#FFC944" HorizontalAlignment="Left"/>
                                 </StackPanel>
                             </Border>

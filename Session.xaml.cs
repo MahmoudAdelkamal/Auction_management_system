@@ -22,6 +22,7 @@ namespace Auction_Management_system
         public Session(int Id,BitmapImage b,string title,string Winner,double current_price)
         { 
             InitializeComponent();
+            
             this.Id = Id;
             this.Winner = Winner;
             this.current_price = current_price;
@@ -61,7 +62,7 @@ namespace Auction_Management_system
             {
                 current_price = Convert.ToDouble(current_price_textbox.Text);
                 sql_queries query = new sql_queries("Data Source=(local);Initial Catalog=Auction_mangement_system;Integrated Security=True");
-                query.update_top_price(current_price,Id,User.profilename);
+                query.update_top_price(current_price,Id,User.username);
             }
                 current_price_textbox.Text = "";
         }
