@@ -51,20 +51,17 @@ namespace Auction_Management_system
                 this.Close();
             }
         }
-
         private void username_Click(object sender, RoutedEventArgs e)
         {
             Validator validator = new Validator();
             validator.validate_user(username_textbox.Text,User.username,"username");
         
         }
-
         private void Profilename_Click(object sender, RoutedEventArgs e)
         {
             Validator validator = new Validator();
             validator.validate_user(profile_name_textbox.Text, User.profilename, "profile_name");
         }
-
         private void password_Click(object sender, RoutedEventArgs e)
         {
             Validator validator = new Validator();

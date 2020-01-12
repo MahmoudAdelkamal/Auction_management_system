@@ -22,7 +22,6 @@ namespace Auction_Management_system
         public Session(int Id,BitmapImage b,string title,string Winner,double current_price)
         { 
             InitializeComponent();
-            
             this.Id = Id;
             this.Winner = Winner;
             this.current_price = current_price;
