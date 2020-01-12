@@ -18,7 +18,6 @@ namespace Auction_Management_system
 {
     class product
     {
-        private int X;
         public string Title { get; set; }
         public string description { get; set; }
         public int Id { get; set; }
